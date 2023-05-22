@@ -123,24 +123,11 @@ function is_condition(tokens,current){
 }
 //Parser number
 parseNumber = (tokens, current) => {
-  let node={
-    type: 'NumberLiteral',
-    name:'NumberLiteral',
-    val: Number(tokens[current++].value),
- }
- is_semicolon(tokens[current++],tokens[current-1].line);
- return [current,node];
+  throw new TypeError("\nIn line "+tokens[current].line +": Constant "+tokens[current].value+" was founded!");    
 }
 //Parser variable
 parseVariable=(tokens, current) => {
-  line=tokens[current].line;
-  let node={
-      type: 'Variable',
-      name:'Variable',
-      val: tokens[current++].value,
-  }
-  is_semicolon(tokens[current++],line);
-  return[current,node];    
+  throw new TypeError("\nIn line "+tokens[current].line +": Variable "+tokens[current].value+" was founded!");    
 }
 //Parser else and then token
 parseELSE_THEN = (tokens, current) => {
@@ -398,8 +385,6 @@ function f(ast,cur){
           cur=f(ast,cur);
         }while(true);
         }
-      case "Variable": check(ast.variables.get(v),v); break;
-      case "NumberLiteral": return cur;
         default : return cur;
       }
     return cur;
