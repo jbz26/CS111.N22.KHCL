@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Gọi file lưu hàm biên dịch-->
+    <script src="./js_file/bb_compiler.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Online Barebone Compiler</title>
+    <title>Document</title>
+</head>
+<body>
+      <div class="header"> 
+        <h1>Online Barebone Compiler</h1>
+        <h4> Design by JBZ</h4>
+      </div>
+      <div class="text_container">
+        <!-- Vùng input dùng để nhập code-->
+        <div class="in">
+          <h3>Insert code here
+            <button class="run" onclick=myFunction()>Run</button>
+          </h3> 
+          <textarea placeholder="Compiler of barebone language..." name="code" id="code" cols="60" rows="30"></textarea>   
+          <div class="hint"></div>
+           </div>
+        <!-- Vùng output ra kết quả, các lỗi khi biên dịch-->
+        <div class="out">
+          <h3>Output
+            <button onclick=ClearOutput()>Clear</button>
+          </h3>
+          <textarea readonly name="output" id="output" cols="30" rows="30"></textarea>   
+        </div>
+      </div>
+       <script>
+        //Hàm xử lí khi nhận được sự kiện click-button
+        function myFunction() {
+          document.getElementById("output").value ="";
+          {var code=document.getElementById("code").value;
+          try{
+            var output=get_Value(code);
+            document.getElementById("output").value =output;
+          }catch(e){
+            document.getElementById("output").value=e;
+          }     }     
+        }
+        function ClearOutput(){
+        document.getElementById("output").value ="";
+        }
+      </script>
+
+     <!--Hàm hiện thị gợi ý các cú pháp hỗ trợ quá trình coding--> 
+     <script>
+       // Tải file JSON từ server
+       fetch('dictionary.json')
+         .then(response => response.json())
+         .then(data => {
+           // Lưu từ điển vào biến dictionary
+            const dictionary = data;
+ 
+           // Xử lý dữ liệu
+            const keywords = Object.keys(dictionary);
+ 
+           // Tạo gợi ý cho từng từ khóa
+            const editor = document.querySelector('#code');
+            editor.addEventListener('input', event => {
+               const currentWord = getCurrentWord(event.target.value, event.target.selectionStart);
+               const hint = document.querySelector('.hint');
+               if(currentWord!=""){
+                const matches = keywords.filter(word => word.startsWith(currentWord));
+                // Hiển thị gợi ý
+                hint.innerHTML = '';
+                if (matches.length > 0) {
+                  const ul = document.createElement('ul');
+                  matches.slice(0, 10).forEach(match => {
+                    const li = document.createElement('li');
+                    li.textContent = match;
+                    // Khi ta chọn một gợi ý
+                    li.addEventListener('click', () => {
+                      const before = event.target.value.slice(0, event.target.selectionStart);
+                      const after = event.target.value.slice(event.target.selectionStart);
+                      const regex = /(^|\s)(\w+)$/; //Tìm tiếng gần nhất với con trỏ soạn thảo.
+                      event.target.value = before.replace(regex, `$1${match} `) + after;
+                      hint.innerHTML = '';
+                    });
+                    ul.appendChild(li);
+                  });
+ 
+                 hint.appendChild(ul);
+                } else {
+                 hint.innerHTML = '';
+                };
+              } else {
+                hint.innerHTML = '';
+              }
+            });
+          });
+        // Hàm lấy từ hiện tại
+        function getCurrentWord(text, position) {
+          const before = text.slice(0, position);
+          const after = text.slice(position);
+          const regex = /\b(\w+)$/;
+          return (before.match(regex) || after.match(regex) || [''])[0];
+        }
+     </script>    
+</body>
+</html>

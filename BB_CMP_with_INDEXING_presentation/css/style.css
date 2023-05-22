@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 150%;
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+}
+.header{
+    margin: 10px;
+}
+.header h1{
+    padding-top: 20px;
+}
+.text_container{
+    margin: 10px 1%;
+
+}
+.in{
+    width: 55%;
+    display:inline-block;
+    outline-style: dashed;
+    margin: 10px;
+    background-color: white;
+    padding-left: 5%;
+}
+.out{
+    width: 30%;
+    margin: 10px;
+    display:inline-block;
+    float: right;
+    padding: 10px;
+    outline-style: dashed;
+    background-color: white;
+}
+button{
+    display: inline-block;
+    float: right;
+    margin-right: 5%;
+    background-color: red;
+    border-color: red;
+    color: white;
+    padding: 5px 15px ;
+    font-family: "euclid_circular";
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5%;
+}
+.run{
+    background-color: #0556f3;
+    border-color:#0556f3;
+}
+.header{
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+}
+
+.debug_container{
+    padding-left: 5%;
+}
+div{
+    padding: 10px;
+}
+h3{ 
+    padding: 10px;
+    line-height: 30px;
+    font-size: 20px;
+}
+h1{
+    position: relative;
+    font-size: 40px;
+}
+h4{
+    margin-left: 30%;
+    text-decoration:underline;
+}
+textarea{ 
+    padding:15px;
+    background-color:#dee3ed;
+   
+}
+.hint {
+    float: right;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid gray;
+    border-top: none;
+  }
+.hint ul,
+.hint li {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.hint li {
+padding: 0.5em;
+cursor: pointer;
+}
+.hint li:hover {
+background-color: lightgray;
+}

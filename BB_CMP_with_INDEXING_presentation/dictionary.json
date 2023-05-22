@@ -1,0 +1,10 @@
+{
+    "clear var;"  : " initia var = 0",
+    "incr var;"   :"var = var + 1",
+    "decr var;"   :"var = var - 1",
+    "print var;"  : "output var",
+    "copy var varA;"   :"var = varA",
+    "copy var number;"   :"var = number",
+    "while var not 0 do \n \t \n end;"           :"while-loop",
+    "if var not 0 then \n \t \n \t else \n\t \n  endif;"   :"conditional command"
+}
