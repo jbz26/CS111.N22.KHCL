@@ -1,0 +1,126 @@
+-----GAN y=x-----
+clear Y;
+clear Temp;
+while X not 0 do
+ incr Y;
+ incr Temp;
+ decr X;
+end;
+while Temp not 0 do
+ incr X;
+ decr Temp;
+end;
+-----TONG-----
+copy x 8;
+copy y 9;
+clear Z;
+while X not 0 do
+ incr Z;
+ decr X;
+end;
+while Y not 0 do
+ incr Z;
+ decr Y;
+end;
+-----HIEU-----
+copy x 10;
+copy y 7;
+clear Z;
+ while X not 0 do
+ incr Z;
+ decr X;
+ end;
+ while Y not 0 do
+ decr Z;
+ decr Y;
+ end;
+-----So Sanh X NOT 0----
+clear y;
+ incr y;
+ while x not 0 do
+ clear x;
+ clear y;
+ end;
+ while y not 0 do
+ clear x;
+ incr x;
+ clear y;
+ end;
+>>>>>>>>IF x NOT 0 then <> ELSE <> <<<<<<<<<<<<<<<
+-----TICH-----
+copy x 8;
+copy y 9;
+clear Z;
+while X not 0 do
+clear W;
+ while Y not 0 do
+ incr Z;
+ incr W;
+decr Y;
+ end;
+ while W not 0 do
+ incr Y;
+ decr W;
+ end;
+ decr X;
+end;
+------SO SANH X<Y <0,1>-------------
+clear kq;
+copy x 9;
+copy y 9;
+ while Y not 0 do
+ incr kq;
+ decr Y;
+ end;
+while X not 0 do
+ decr kq;
+ decr X;
+ end;
+ if kq not 0 then
+	clear kq;
+	 else
+	incr kq;
+endif;
+------CHIA x/y--------
+copy x 10;
+copy y 2;
+clear Z;
+
+clear kq;
+incr kq;
+while Y not 0 do
+ 	while kq not 0 do
+	clear W;
+		while y not 0 do
+			decr X;
+			decr Y;
+			incr W;
+		end;
+		while W not 0 do
+			incr Y;
+			decr W;
+		end;
+		incr Z;	
+
+		clear kqt;
+
+		copy xt x;
+		copy yt y;
+		while Yt not 0 do
+			incr kqt;
+			decr Yt;
+		end;
+		while Xt not 0 do
+			decr kqt;
+			decr Xt;
+		end;
+		if kqt not 0 then
+			clear kq;
+		else
+			incr kq;
+		endif;
+	end;
+	clear Y;
+end;
+
+
