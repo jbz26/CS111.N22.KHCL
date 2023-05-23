@@ -21,7 +21,8 @@
           <h3>Insert code here
             <button class="run" onclick=myFunction()>Run</button>
           </h3> 
-          <textarea placeholder="Compiler of barebone language..." name="code" id="code" cols="60" rows="30"></textarea>   
+          <div id="lineNumber"></div>
+          <textarea oninput=numberRows() placeholder="Compiler of barebone language..." name="code" id="code" cols="60" rows="30"></textarea>   
           <div class="hint"></div>
            </div>
         <!-- Vùng output ra kết quả, các lỗi khi biên dịch-->
@@ -103,5 +104,25 @@
           return (before.match(regex) || after.match(regex) || [''])[0];
         }
      </script>    
+    <!--Hiện thị số dòng -->
+      <script>
+        function numberRows() {
+        var textArea = document.getElementById("code");
+        var lines = textArea.value.split("\n");
+
+        var lineNumbers = "";
+        for (var i = 0; i < lines.length; i++) {
+            lineNumbers += i + 1 + "\n";
+        }
+
+        document.getElementById("lineNumber").innerText = lineNumbers;
+        }
+        var textArea = document.getElementById("code");
+        var lineNumber = document.getElementById("lineNumber");
+
+        textArea.addEventListener("scroll", function() {
+          lineNumber.scrollTop = textArea.scrollTop;
+        });
+      </script>
 </body>
 </html>
