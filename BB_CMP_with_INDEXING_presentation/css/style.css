@@ -22,7 +22,7 @@ html{
     outline-style: dashed;
     margin: 10px;
     background-color: white;
-    padding-left: 5%;
+    padding-left: 3%;
 }
 .out{
     width: 30%;
@@ -99,4 +99,13 @@ cursor: pointer;
 }
 .hint li:hover {
 background-color: lightgray;
+}
+#lineNumber{
+    padding-right: 10px;
+    margin-top: 7px;
+    display: inline;
+    float: left;
+    font-size: 13px;
+    max-height: 445px;
+    overflow-y: scroll;
 }
